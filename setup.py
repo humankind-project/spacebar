@@ -13,5 +13,6 @@ setup(
 	long_description=long_description,
 	author="Brandon Sexton",
 	author_email="brandon.sexton.1@outlook.com",
+	entry_points={'console_scripts': ['cmd_name'='scriptname:runmethod']}
 	packages=find_packages()
 	)

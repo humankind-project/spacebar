@@ -88,3 +88,83 @@ class ClassicalElements:
             aop+=pi*2
 
         return ClassicalElements(a, inc, e, raan, aop, ma)
+
+    def get_mean_motion(self) -> float:
+        """
+        Follows equation 2.35 from Satellite Orbits to calculate the mean
+        motion of the orbit
+        """
+        return sqrt(Earth.mu/self.semi_major_axis**3)
+
+    def get_perigee_vector(self) -> Vector3D:
+        """
+        Follows equation 2.52 from Satellite Orbits to calculate the unit
+        vector pointing from the central body to perigee of the orbit
+        """
+        cw = cos(self.arg_of_perigee)
+        cO = cos(self.raan)
+        sw = sin(self.arg_of_perigee)
+        sO = sin(self.raan)
+        ci = cos(self.inclination)
+
+        x = cw*cO - sw*ci*sO
+        y = cw*sO + sw*ci*cO
+        z = sw*sin(self.inclination)
+
+        return Vector3D(x, y, z).normalize()
+
+    def get_semi_latis_rectum_vector(self) -> Vector3D:
+        """
+        Follows equation 2.53 from satellite orbits to calculate the vector
+        pointing to a location in the orbit which corresponds to a true anomaly 
+        of 90 degrees
+        """
+        cw = cos(self.arg_of_perigee)
+        cO = cos(self.raan)
+        sw = sin(self.arg_of_perigee)
+        sO = sin(self.raan)
+        ci = cos(self.inclination)
+
+        x = -sw*cO - cw*ci*sO
+        y = -sw*sO + cw*ci*cO
+        z = cw*sin(self.inclination)
+
+        return Vector3D(x, y, z).normalize()
+
+    @staticmethod
+    def equation_to_eccentric_anomaly(mean_anom:float, ecc:float) -> float:
+        """
+        Iterative method to solve eccentric anomaly with Kepler's equation 
+        given eccentricity and mean anomaly.  This follows the method found
+        on page 24 of Satellite Orbits.
+        """
+
+        #Seed E sub i with mean anomaly
+        ea_0 = mean_anom
+        converged = False
+
+        #For high eccentricities, seed E sub i with pi
+        if ecc > .8:
+            ea_0 = pi
+
+        #Iterate until meeting tolerance
+        while not converged:
+
+            #Save the numerator and denominator separately to avoid long lines
+            num = mean_anom - ea_0 + ecc*sin(ea_0)
+            den = 1 - ecc*cos(ea_0)
+
+            #Solve E sub i+1
+            ea_n = ea_0 + num/den
+
+            #Check tolerance and reseed E sub i if difference is too large
+            if(abs(ea_n-ea_0) < 1e-12):
+                converged = True
+            else:
+                ea_0 = ea_n
+
+        #Correct for negative values
+        if ea_n < 0:
+            ea_n+=pi*2.0
+
+        return ea_n

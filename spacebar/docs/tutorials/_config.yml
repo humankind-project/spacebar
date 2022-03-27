@@ -1,0 +1,34 @@
+# Jupyter Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Spacebar Python Tutorial
+author: sextonb
+logo: logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://curvenote.com/@sextonb/spacebar # Online location of your book
+
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  # favicon: images/favicon.ico
+  # google_analytics_id: G-XXX or UA-XXX
+  home_page_in_navbar: false
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  extra_navbar: Written in <a href="https://curvenote.com">Curvenote</a>

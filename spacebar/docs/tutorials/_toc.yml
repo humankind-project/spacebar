@@ -1,0 +1,11 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: home
+parts:
+  - caption: Modules
+    chapters:
+      - file: module-1
+      - file: module-2
+

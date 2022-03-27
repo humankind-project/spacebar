@@ -1,3 +1,4 @@
+from audioop import mul
 from math import sqrt
 
 class Vector3D:
@@ -71,3 +72,9 @@ class Vector3D:
         Method used to get the length of the calling vector
         """
         return sqrt(self.x**2 + self.y**2 + self.z**2)
+
+    def scale(self, multiple:float) -> "Vector3D":
+        """
+        Method used to scale each element by the specified multiple
+        """
+        return Vector3D(self.x*multiple, self.y*multiple, self.z*multiple)

@@ -56,3 +56,12 @@ class TestVector3D(unittest.TestCase):
         self.assertAlmostEqual(2/sqrt(446), u.x)
         self.assertAlmostEqual(1/sqrt(446), u.y)
         self.assertAlmostEqual(21/sqrt(446), u.z)
+
+    def test_scale(self):
+        """
+        Test to verify the ability to scale a vector
+        """
+        v = self.VECTOR_1.scale(2)
+        self.assertAlmostEqual(8, v.x)
+        self.assertAlmostEqual(4, v.y)
+        self.assertAlmostEqual(84, v.z)

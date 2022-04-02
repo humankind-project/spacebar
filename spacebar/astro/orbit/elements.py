@@ -7,10 +7,32 @@ class ClassicalElements:
     def __init__(
         self, sma:float, inc:float, ecc:float, raan:float, aop:float, ma:float
     ) -> None:
-        """
-        Basic constructor when elements are known
-        """
+        """Basic constructor when elements are known
 
+        Note:
+            All lengths are measured in kilometers, and all angles are measured
+            in radians
+
+        Args:
+            sma:    semi-major axis of orbit
+            inc:    angle between momentum vector and z axis
+            ecc:    eccentricity of the orbit 
+            raan:   right ascension of ascending node
+            aop:    argument of perigee
+            ma:     mean anomaly
+
+        Attributes:
+            semi_major_axis:    the average radius relative to the central body
+            inclination:        angle between momentum vector and z axis
+            eccentricity:       measure where 0 == circular 1 == parabolic
+            raan:               right ascension at which orbit becomes positive
+            arg_of_perigee:     angle of raan vector and eccentricity vector
+            mean_anomaly:       location angle mapped to circle
+
+        Returns:
+            None
+
+        """
         self.semi_major_axis = sma
         self.inclination = inc
         self.eccentricity = ecc
@@ -20,15 +42,24 @@ class ClassicalElements:
 
     @classmethod
     def from_position_and_velocity(
-        self, pos:Vector3D, vel:Vector3D
+        cls, pos:Vector3D, vel:Vector3D
     ) -> "ClassicalElements":
-        """
-        Constructor when ECI position and velocity are known.
+        """Constructor when ECI position and velocity are known.
 
         This method follows the procedures on pages 28-29 of Satellite Orbits
         by Oliver Monenbruck and Eberhard Gill
-        """
 
+        Note:
+            Values are in kilometers
+
+        Args:
+            pos:    Object containing x, y, and z location of satellite
+            vel:    Object containing x, y, and z velocity of satellite
+
+        Returns:
+            ClassicalElements representation of input position and velocity
+
+        """
         #Get the momentum vector from cross product of pos and vel (Eq. 2.56)
         h = pos.cross(vel)
 
@@ -90,16 +121,31 @@ class ClassicalElements:
         return ClassicalElements(a, inc, e, raan, aop, ma)
 
     def get_mean_motion(self) -> float:
-        """
+        """get the average orbital rate
+
         Follows equation 2.35 from Satellite Orbits to calculate the mean
         motion of the orbit
+
+        Args:
+            None
+
+        Returns:
+            mean orbital rate in radians per second
+
         """
         return sqrt(Earth.mu/self.semi_major_axis**3)
 
     def get_perigee_vector(self) -> Vector3D:
-        """
-        Follows equation 2.52 from Satellite Orbits to calculate the unit
-        vector pointing from the central body to perigee of the orbit
+        """get vector pointing from central body to satellite perigee
+
+        Follows equation 2.52 from Satellite Orbits 
+
+        Args:
+            None
+
+        Returns:
+            unit vector pointing to perigee
+
         """
         cw = cos(self.arg_of_perigee)
         cO = cos(self.raan)
@@ -114,10 +160,17 @@ class ClassicalElements:
         return Vector3D(x, y, z).normalize()
 
     def get_semi_latis_rectum_vector(self) -> Vector3D:
-        """
-        Follows equation 2.53 from satellite orbits to calculate the vector
-        pointing to a location in the orbit which corresponds to a true anomaly 
-        of 90 degrees
+        """get vector pointing to true anomaly of 90 degrees
+
+        Follows equation 2.53 from satellite orbits
+        
+        Args:
+            None
+
+        Returns:
+            unit vector pointing to satellite location equal to a true anomaly
+            of 90 degrees
+
         """
         cw = cos(self.arg_of_perigee)
         cO = cos(self.raan)
@@ -133,10 +186,20 @@ class ClassicalElements:
 
     @staticmethod
     def equation_to_eccentric_anomaly(mean_anom:float, ecc:float) -> float:
-        """
-        Iterative method to solve eccentric anomaly with Kepler's equation 
-        given eccentricity and mean anomaly.  This follows the method found
-        on page 24 of Satellite Orbits.
+        """Solve eccentric anomaly given eccentricity and mean anomaly 
+        
+        Follows the method found on page 24 of Satellite Orbits.
+
+        Note:
+            All angles are in radians
+
+        Args:
+            mean_anom:      mean anomaly of orbit
+            ecc:            eccentricity of orbit
+
+        Returns:
+            value of eccentric anomaly
+            
         """
 
         #Seed E sub i with mean anomaly

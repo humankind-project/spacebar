@@ -9,11 +9,35 @@ from spacebar.astro.orbit.elements import ClassicalElements
 class TwoBody:
 
     def __init__(self, epoch:UTC, pos:Vector3D, vel:Vector3D) -> None:
+        """Class used to model basic propagation
+        
+        Note:
+            Units are in kilometers and kilometers per second
+
+        Args:
+            epoch:      time of initial state validity
+            pos:        ECI position of the satellite at epoch
+            vel:        ECI velocity of the satellite at epoch
+            
+        Returns:
+            None
+            
+        """
         self.epoch0 = deepcopy(epoch)
         self.position0 = deepcopy(pos)
         self.velocity0 = deepcopy(vel)
 
-    def get_state_at_epoch(self, next_epoch:UTC):
+    def get_state_at_epoch(
+        self, next_epoch:UTC
+    ) -> tuple(UTC, Vector3D, Vector3D):
+        """get future state of model
+        
+        Args:
+            next_epoch:     desired time of next state
+            
+        Returns:
+            new epoch, position, and velocity 
+            """
 
         #Get the time difference in seconds
         t = next_epoch.timestamp - self.epoch0.timestamp

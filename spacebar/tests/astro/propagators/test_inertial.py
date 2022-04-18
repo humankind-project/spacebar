@@ -1,4 +1,5 @@
 import unittest
+import unittest.mock as mk
 
 import matplotlib.pyplot as plt
 from spacebar.time.utc import UTC
@@ -13,7 +14,8 @@ class TestTwoBody(unittest.TestCase):
     START_VELOCITY = Vector3D(0, 3.075, 0)
     END_POSITION = Vector3D(42164, 0, 0)
 
-    def test_get_state_at_epoch(self):
+    @mk.patch("matplotlib.pyplot.show")
+    def test_get_state_at_epoch(self, mock_show):
         """
         Test to TwoBody propagation
         """

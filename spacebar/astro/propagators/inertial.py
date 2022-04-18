@@ -1,3 +1,5 @@
+import typing
+
 from copy import deepcopy
 from math import cos, sin, sqrt
 
@@ -29,7 +31,7 @@ class TwoBody:
 
     def get_state_at_epoch(
         self, next_epoch:UTC
-    ) -> tuple(UTC, Vector3D, Vector3D):
+    ) -> typing.Tuple[UTC, Vector3D, Vector3D]:
         """get future state of model
         
         Args:

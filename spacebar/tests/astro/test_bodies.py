@@ -2,6 +2,7 @@ import unittest
 
 from spacebar.astro.bodies import Earth
 
+
 class TestEarth(unittest.TestCase):
     """
     Test class to validate Earth model

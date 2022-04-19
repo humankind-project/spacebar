@@ -6,6 +6,7 @@ from spacebar.time.utc import UTC
 from spacebar.astro.propagators.inertial import TwoBody
 from spacebar.math.linalg import Vector3D
 
+
 class TestTwoBody(unittest.TestCase):
 
     START_EPOCH = UTC("Mar 04 2022 04:42:42.000")
@@ -23,7 +24,7 @@ class TestTwoBody(unittest.TestCase):
         x = []
         y = []
         for t in range(144):
-            pep = self.START_EPOCH.plus_seconds(t*600)
+            pep = self.START_EPOCH.plus_seconds(t * 600)
             _, pos, _ = tb.get_state_at_epoch(pep)
             x.append(pos.x)
             y.append(pos.y)

@@ -2,6 +2,7 @@ import unittest
 
 from spacebar.time.utc import UTC
 
+
 class TestVector3D(unittest.TestCase):
 
     EPOCH_AS_STRING = "Mar 04 2022 04:42:42.000"

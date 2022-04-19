@@ -124,7 +124,7 @@ The \__init_\_.py files will be empty, but they will be necessary for Python to 
 class Earth:
     """
     Class used to represent Earth.  Values are defined using EGM96 geopotential
-    model.  Constant naming convention is intentionally not used since the 
+    model.  Constant naming convention is intentionally not used since the
     values defined here may be updated in the future by introducing other
     geopotential models
     """
@@ -193,4 +193,3 @@ The process defined here of creating a test module with each script addition can
    ```
 
 After running the test module, you should receive an indication of the number of passed/failed tests.
-

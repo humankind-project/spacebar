@@ -29,9 +29,7 @@ class TwoBody:
         self.position0 = deepcopy(pos)
         self.velocity0 = deepcopy(vel)
 
-    def get_state_at_epoch(
-        self, next_epoch: UTC
-    ) -> typing.Tuple[UTC, Vector3D, Vector3D]:
+    def get_state_at_epoch(self, next_epoch: UTC) -> typing.Tuple[UTC, Vector3D, Vector3D]:
         """get future state of model
 
         Args:
@@ -45,9 +43,7 @@ class TwoBody:
         t = next_epoch.timestamp - self.epoch0.timestamp
 
         # Save the COEs of the given state vector
-        coes = ClassicalElements.from_position_and_velocity(
-            self.position0, self.velocity0
-        )
+        coes = ClassicalElements.from_position_and_velocity(self.position0, self.velocity0)
 
         # Get mean anomaly after delta t (Equation 2.37)
         ma = coes.mean_anomaly + coes.get_mean_motion() * t

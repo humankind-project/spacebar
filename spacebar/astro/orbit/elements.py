@@ -4,9 +4,7 @@ from math import atan2, sqrt, pi, sin, cos
 
 
 class ClassicalElements:
-    def __init__(
-        self, sma: float, inc: float, ecc: float, raan: float, aop: float, ma: float
-    ) -> None:
+    def __init__(self, sma: float, inc: float, ecc: float, raan: float, aop: float, ma: float) -> None:
         """Basic constructor when elements are known
 
         Note:
@@ -41,9 +39,7 @@ class ClassicalElements:
         self.mean_anomaly = ma
 
     @classmethod
-    def from_position_and_velocity(
-        cls, pos: Vector3D, vel: Vector3D
-    ) -> "ClassicalElements":
+    def from_position_and_velocity(cls, pos: Vector3D, vel: Vector3D) -> "ClassicalElements":
         """Constructor when ECI position and velocity are known.
 
         This method follows the procedures on pages 28-29 of Satellite Orbits

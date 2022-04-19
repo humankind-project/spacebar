@@ -28,9 +28,7 @@ class Vector3D:
             AVector representing element addition of self and vec_to_add
 
         """
-        return Vector3D(
-            self.x + vec_to_add.x, self.y + vec_to_add.y, self.z + vec_to_add.z
-        )
+        return Vector3D(self.x + vec_to_add.x, self.y + vec_to_add.y, self.z + vec_to_add.z)
 
     def minus(self, vec_to_subtract: "Vector3D") -> "Vector3D":
         """Performs vector subtraction

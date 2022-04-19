@@ -1,2 +1,4 @@
 spacebar.egg-info/*
 dist/*
+.tox/
+poetry.lock

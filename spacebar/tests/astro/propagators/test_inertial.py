@@ -2,9 +2,10 @@ import unittest
 import unittest.mock as mk
 
 import matplotlib.pyplot as plt
-from spacebar.time.utc import UTC
+
 from spacebar.astro.propagators.inertial import TwoBody
 from spacebar.math.linalg import Vector3D
+from spacebar.time.utc import UTC
 
 
 class TestTwoBody(unittest.TestCase):

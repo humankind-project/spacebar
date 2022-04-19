@@ -1,6 +1,7 @@
+from math import atan2, cos, pi, sin, sqrt
+
 from spacebar.astro.bodies import Earth
 from spacebar.math.linalg import Vector3D
-from math import atan2, sqrt, pi, sin, cos
 
 
 class ClassicalElements:

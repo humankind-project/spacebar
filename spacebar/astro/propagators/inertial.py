@@ -1,12 +1,11 @@
 import typing
-
 from copy import deepcopy
 from math import cos, sin, sqrt
 
 from spacebar.astro.bodies import Earth
-from spacebar.time.utc import UTC
-from spacebar.math.linalg import Vector3D
 from spacebar.astro.orbit.elements import ClassicalElements
+from spacebar.math.linalg import Vector3D
+from spacebar.time.utc import UTC
 
 
 class TwoBody:

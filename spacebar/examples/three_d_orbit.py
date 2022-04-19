@@ -1,9 +1,9 @@
-from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 
-from spacebar.time.utc import UTC
-from spacebar.math.linalg import Vector3D
 from spacebar.astro.propagators.inertial import TwoBody
+from spacebar.math.linalg import Vector3D
+from spacebar.time.utc import UTC
 
 
 def run():

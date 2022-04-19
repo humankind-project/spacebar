@@ -1,5 +1,6 @@
 import unittest
 from math import degrees
+
 from spacebar.astro.orbit.elements import ClassicalElements
 from spacebar.math.linalg import Vector3D
 

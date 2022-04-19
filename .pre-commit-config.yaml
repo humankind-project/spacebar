@@ -21,8 +21,7 @@ repos:
   hooks:
     - id: black
 
-# - repo: https://github.com/PyCQA/flake8
-#   rev: 4.0.1
-#   hooks:
-#     - id: flake8
-#       exclude: "reference_files"
+- repo: https://github.com/PyCQA/flake8
+  rev: 4.0.1
+  hooks:
+    - id: flake8

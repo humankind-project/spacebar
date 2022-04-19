@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
 
 from spacebar.astro.propagators.inertial import TwoBody
 from spacebar.math.linalg import Vector3D
@@ -27,7 +26,7 @@ def run():
     TEN_MINUTES = 600
 
     # This is your propagation loop
-    for t in range(TEN_MINUTE_SEGMENTS_IN_DAY):
+    for _ in range(TEN_MINUTE_SEGMENTS_IN_DAY):
 
         # We've used underscores here to indicate we only want position
         _, new_position, _ = propagator.get_state_at_epoch(epoch)

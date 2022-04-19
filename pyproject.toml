@@ -37,3 +37,7 @@ force-exclude = '''
 profile = "black"
 filter_files = true
 line_length = 120
+
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "skip"

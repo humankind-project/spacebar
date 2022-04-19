@@ -66,7 +66,7 @@ class ClassicalElements:
         # Get inc and raan (Eq. 2.58)
         inc = atan2(sqrt(w.x**2 + w.y**2), w.z)
         if inc == 0:
-            raan = 0  # zero inc would create infinite raans without this
+            raan = 0.0  # zero inc would create infinite raans without this
         else:
             raan = atan2(w.x, -w.y)
 

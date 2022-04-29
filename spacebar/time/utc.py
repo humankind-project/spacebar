@@ -1,11 +1,10 @@
 from datetime import datetime, timezone
 
-
 class UTC:
-
+    
     STRING_FORMAT = "%b %d %Y %H:%M:%S.%f"  # Mmm DD YYYY hh:mm:ss.ssssss
-
-    def __init__(self, epoch_string: str) -> None:
+    
+    def __init__(self, epoch_string:str) -> None:
         """Class to represent calendar UTC epochs.
 
         Args:
@@ -22,12 +21,12 @@ class UTC:
         utc_datetime = local_datetime.replace(tzinfo=timezone.utc)
         self.timestamp = utc_datetime.timestamp()
 
-    def plus_seconds(self, seconds_to_add: float) -> "UTC":
+    def plus_seconds(self, seconds_to_add:float) -> "UTC":
         """get new UTC of self plus variable seconds
-
+        
         Args:
             seconds_to_add:     the number of seconds to be added to self
-
+            
         Returns:
             new UTC representing self plus seconds_to_add
 
@@ -38,13 +37,13 @@ class UTC:
 
     def to_string(self) -> str:
         """get the calendar format of the UTC object
-
+        
         Args:
             None
-
+            
         Returns:
             string in Mmm DD YYYY hh:mm:ss.ssssss format
-
+            
         """
         utc_datetime = datetime.utcfromtimestamp(self.timestamp)
         return utc_datetime.strftime(self.STRING_FORMAT)

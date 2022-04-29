@@ -3,7 +3,6 @@ from math import sqrt
 
 from spacebar.math.linalg import Vector3D
 
-
 class TestVector3D(unittest.TestCase):
 
     VECTOR_1 = Vector3D(4, 2, 42)
@@ -47,16 +46,16 @@ class TestVector3D(unittest.TestCase):
         """
         Test to verify the vector magnitude
         """
-        self.assertAlmostEqual(2 * sqrt(446), self.VECTOR_1.magnitude())
+        self.assertAlmostEqual(2*sqrt(446), self.VECTOR_1.magnitude())
 
     def test_normalize(self):
         """
         Test to verify the unit vector
         """
         u = self.VECTOR_1.normalize()
-        self.assertAlmostEqual(2 / sqrt(446), u.x)
-        self.assertAlmostEqual(1 / sqrt(446), u.y)
-        self.assertAlmostEqual(21 / sqrt(446), u.z)
+        self.assertAlmostEqual(2/sqrt(446), u.x)
+        self.assertAlmostEqual(1/sqrt(446), u.y)
+        self.assertAlmostEqual(21/sqrt(446), u.z)
 
     def test_scale(self):
         """

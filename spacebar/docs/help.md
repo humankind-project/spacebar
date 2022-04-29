@@ -60,4 +60,3 @@ Here is a screenshot of the directory once both `curvenote export` and `jupyter-
 ```{figure} images/zyBWlmnbnltDRPejFqwi-LRnSahb22c3nHakmNg3H-v1.png
 :name: FprXjv6VrO
 ```
-

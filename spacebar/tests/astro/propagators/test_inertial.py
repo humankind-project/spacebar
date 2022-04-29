@@ -2,9 +2,11 @@ import unittest
 import unittest.mock as mk
 
 import matplotlib.pyplot as plt
-from spacebar.time.utc import UTC
+
 from spacebar.astro.propagators.inertial import TwoBody
 from spacebar.math.linalg import Vector3D
+from spacebar.time.utc import UTC
+
 
 class TestTwoBody(unittest.TestCase):
 
@@ -23,7 +25,7 @@ class TestTwoBody(unittest.TestCase):
         x = []
         y = []
         for t in range(144):
-            pep = self.START_EPOCH.plus_seconds(t*600)
+            pep = self.START_EPOCH.plus_seconds(t * 600)
             _, pos, _ = tb.get_state_at_epoch(pep)
             x.append(pos.x)
             y.append(pos.y)

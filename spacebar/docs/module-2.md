@@ -14,7 +14,7 @@ oxa: oxa:zyBWlmnbnltDRPejFqwi/R3rt5inQIf8lalHYNOg3
 
 March 2, 2022
 
-Let's take a look at a better testing method now that we've started off with something a bit more interesting than printing "Hello, world."  
+Let's take a look at a better testing method now that we've started off with something a bit more interesting than printing "Hello, world."
 
 #### Remove the \__main_\_ entry point
 
@@ -40,7 +40,7 @@ As you've probably already seen, we're going to be creating a mirrored "tests" d
 :name: oCN0OqFSF0
 ```
 
-You'll see that the tests are pretty basic, but this structure will be vital as our project grows.  
+You'll see that the tests are pretty basic, but this structure will be vital as our project grows.
 
 #### Run tests
 
@@ -51,4 +51,3 @@ After you've edited your test_bodies.py file, go to the terminal and execute the
 ```
 
 Inspect the output to insure 2 tests were run successfully.  If the tests were not detected, verify that \__init_\_.py files are in all directories.  If the tests ran but failed, check your assertions on lines 14 and 20 of test_bodies.py or check your mu and equatorial_radius settings on lines 6 and 7 of bodies.py
-
